@@ -3,5 +3,7 @@
 
 RendererOutput Renderer::Render()
 {
-    return RendererOutput();
+    RendererOutput output = RendererOutput();
+    
+    return output;
 }

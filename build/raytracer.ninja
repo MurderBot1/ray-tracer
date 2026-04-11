@@ -48,35 +48,47 @@ rule custom
 
 # Configuration: raytracer_Debug
 
-cflags_raytracer_Debug = -m64 -g -I../include -Wall -Wextra -Wpedantic
-cxxflags_raytracer_Debug = -m64 -g -std=c++23 -I../include -Wall -Wextra -Wpedantic
+cflags_raytracer_Debug = -m64 -g -I../include -I../external/imgui -Wall -Wextra -Wpedantic
+cxxflags_raytracer_Debug = -m64 -g -std=c++23 -I../include -I../external/imgui -Wall -Wextra -Wpedantic
 ldflags_raytracer_Debug = -m64 -L/usr/lib64
-objdir_raytracer_Debug = ../bin-int/Debug
+links_raytracer_Debug = ../bin/Debug/imgui.lib
+objdir_raytracer_Debug = ../bin-int/Debug/Debug/raytracer
 targetdir_raytracer_Debug = ../bin/Debug
 target_raytracer_Debug = raytracer.exe
 
-build ../bin-int/Debug/app.o: cxx_gcc ../src/app.cpp
+build ../bin-int/Debug/Debug/raytracer/app.o: cxx_gcc ../src/app.cpp
   cxxflags = $cxxflags_raytracer_Debug
-build ../bin-int/Debug/main.o: cxx_gcc ../src/main.cpp
+build ../bin-int/Debug/Debug/raytracer/main.o: cxx_gcc ../src/main.cpp
   cxxflags = $cxxflags_raytracer_Debug
-build ../bin/Debug/raytracer.exe: link_gcc ../bin-int/Debug/app.o ../bin-int/Debug/main.o
+build ../bin-int/Debug/Debug/raytracer/renderer.o: cxx_gcc ../src/renderer.cpp
+  cxxflags = $cxxflags_raytracer_Debug
+build ../bin-int/Debug/Debug/raytracer/window.o: cxx_gcc ../src/window.cpp
+  cxxflags = $cxxflags_raytracer_Debug
+build ../bin/Debug/raytracer.exe: link_gcc ../bin-int/Debug/Debug/raytracer/app.o ../bin-int/Debug/Debug/raytracer/main.o ../bin-int/Debug/Debug/raytracer/renderer.o ../bin-int/Debug/Debug/raytracer/window.o | ../bin/Debug/imgui.lib
   ldflags = $ldflags_raytracer_Debug
+  links = $links_raytracer_Debug
 
 # Configuration: raytracer_Release
 
-cflags_raytracer_Release = -m64 -O2 -I../include -Wall -Wextra -Wpedantic
-cxxflags_raytracer_Release = -m64 -O2 -std=c++23 -I../include -Wall -Wextra -Wpedantic
+cflags_raytracer_Release = -m64 -O2 -I../include -I../external/imgui -Wall -Wextra -Wpedantic
+cxxflags_raytracer_Release = -m64 -O2 -std=c++23 -I../include -I../external/imgui -Wall -Wextra -Wpedantic
 ldflags_raytracer_Release = -m64 -s -L/usr/lib64
-objdir_raytracer_Release = ../bin-int/Release
+links_raytracer_Release = ../bin/Release/imgui.lib
+objdir_raytracer_Release = ../bin-int/Release/Release/raytracer
 targetdir_raytracer_Release = ../bin/Release
 target_raytracer_Release = raytracer.exe
 
-build ../bin-int/Release/app.o: cxx_gcc ../src/app.cpp
+build ../bin-int/Release/Release/raytracer/app.o: cxx_gcc ../src/app.cpp
   cxxflags = $cxxflags_raytracer_Release
-build ../bin-int/Release/main.o: cxx_gcc ../src/main.cpp
+build ../bin-int/Release/Release/raytracer/main.o: cxx_gcc ../src/main.cpp
   cxxflags = $cxxflags_raytracer_Release
-build ../bin/Release/raytracer.exe: link_gcc ../bin-int/Release/app.o ../bin-int/Release/main.o
+build ../bin-int/Release/Release/raytracer/renderer.o: cxx_gcc ../src/renderer.cpp
+  cxxflags = $cxxflags_raytracer_Release
+build ../bin-int/Release/Release/raytracer/window.o: cxx_gcc ../src/window.cpp
+  cxxflags = $cxxflags_raytracer_Release
+build ../bin/Release/raytracer.exe: link_gcc ../bin-int/Release/Release/raytracer/app.o ../bin-int/Release/Release/raytracer/main.o ../bin-int/Release/Release/raytracer/renderer.o ../bin-int/Release/Release/raytracer/window.o | ../bin/Release/imgui.lib
   ldflags = $ldflags_raytracer_Release
+  links = $links_raytracer_Release
 
 # Build targets
 
