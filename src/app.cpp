@@ -30,12 +30,15 @@ App::App()
 
 void App::Setup()
 {
+    Window::CreateWindow();
 }
 
 void App::Loop()
 {
+    Window::DisplayFrame();
 }
 
 void App::Cleanup()
 {
+    Window::DestroyWindow();
 }

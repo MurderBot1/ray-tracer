@@ -2,6 +2,9 @@
 #ifndef APP_H
 #define APP_H
 
+#include <renderer.h>
+#include <window.h>
+
 /**
  * App is the main class that controls the program. It runs this in order:
  * 1. Starts up all parts of the program such as the display window.
