@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "premake",
+            "type": "shell",
+            "command": "premake5",
+            "args": ["ninja"],
+            "problemMatcher": []
+        },
+        {
+            "label": "ninja-build",
+            "type": "shell",
+            "command": "ninja",
+            "args": ["-C", "build", "Release"],
+            "problemMatcher": []
+        },
+        {
+            "label": "run-raytracer",
+            "type": "shell",
+            "command": "bin/Release/raytracer",
+            "problemMatcher": []
+        },
+        {
+            "label": "build-and-run",
+            "dependsOn": [
+                "premake",
+                "ninja-build",
+                "run-raytracer"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+# ninja log v7
+5	783	7975829511979860	../bin-int/Release/main.o	18a82545f5c02235
+0	784	7975829511929797	../bin-int/Release/app.o	da882f3ace38070e
+0	65	7975830131107937	../bin-int/Release/app.o	da882f3ace38070e
+65	151	7975830131757737	../bin/Release/raytracer.exe	e1bfe2e1aa25dee1
