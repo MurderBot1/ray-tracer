@@ -31,6 +31,9 @@
 *.out
 *.app
 
+# Build
 build
-.vscode
 *.ninja
+
+# My vscode files
+.vscode
