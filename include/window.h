@@ -3,6 +3,7 @@
 #define WINDOW_H
 
 #include "renderer.h"
+#include "imgui.h"
 
 /**
  * The window class is used to display the UI.
@@ -27,7 +28,8 @@ class Window
          */
         static void DestroyWindow();
     private:
-
+        static ImGuiIO* io;
+        static bool show;
 };
 
 #endif
