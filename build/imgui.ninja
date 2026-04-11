@@ -48,13 +48,15 @@ rule custom
 
 # Configuration: imgui_Debug
 
-cflags_imgui_Debug = -m64 -g -I../external/imgui -Wall -Wextra -Wpedantic
-cxxflags_imgui_Debug = -m64 -g -std=c++23 -I../external/imgui -Wall -Wextra -Wpedantic
+cflags_imgui_Debug = -m64 -g -I../external/imgui -I../external/imgui/backends -I../external/vulkan-headers/include -Wall -Wextra -Wpedantic
+cxxflags_imgui_Debug = -m64 -g -std=c++23 -I../external/imgui -I../external/imgui/backends -I../external/vulkan-headers/include -Wall -Wextra -Wpedantic
 ldflags_imgui_Debug = -m64 -L/usr/lib64
 objdir_imgui_Debug = ../bin-int/Debug/Debug/imgui
 targetdir_imgui_Debug = ../bin/Debug
 target_imgui_Debug = imgui.lib
 
+build ../bin-int/Debug/Debug/imgui/imgui_impl_vulkan.o: cxx_gcc ../external/imgui/backends/imgui_impl_vulkan.cpp
+  cxxflags = $cxxflags_imgui_Debug
 build ../bin-int/Debug/Debug/imgui/imgui.o: cxx_gcc ../external/imgui/imgui.cpp
   cxxflags = $cxxflags_imgui_Debug
 build ../bin-int/Debug/Debug/imgui/imgui_demo.o: cxx_gcc ../external/imgui/imgui_demo.cpp
@@ -65,17 +67,19 @@ build ../bin-int/Debug/Debug/imgui/imgui_tables.o: cxx_gcc ../external/imgui/img
   cxxflags = $cxxflags_imgui_Debug
 build ../bin-int/Debug/Debug/imgui/imgui_widgets.o: cxx_gcc ../external/imgui/imgui_widgets.cpp
   cxxflags = $cxxflags_imgui_Debug
-build ../bin/Debug/imgui.lib: ar_gcc ../bin-int/Debug/Debug/imgui/imgui.o ../bin-int/Debug/Debug/imgui/imgui_demo.o ../bin-int/Debug/Debug/imgui/imgui_draw.o ../bin-int/Debug/Debug/imgui/imgui_tables.o ../bin-int/Debug/Debug/imgui/imgui_widgets.o
+build ../bin/Debug/imgui.lib: ar_gcc ../bin-int/Debug/Debug/imgui/imgui_impl_vulkan.o ../bin-int/Debug/Debug/imgui/imgui.o ../bin-int/Debug/Debug/imgui/imgui_demo.o ../bin-int/Debug/Debug/imgui/imgui_draw.o ../bin-int/Debug/Debug/imgui/imgui_tables.o ../bin-int/Debug/Debug/imgui/imgui_widgets.o
 
 # Configuration: imgui_Release
 
-cflags_imgui_Release = -m64 -O2 -I../external/imgui -Wall -Wextra -Wpedantic
-cxxflags_imgui_Release = -m64 -O2 -std=c++23 -I../external/imgui -Wall -Wextra -Wpedantic
+cflags_imgui_Release = -m64 -O2 -I../external/imgui -I../external/imgui/backends -I../external/vulkan-headers/include -Wall -Wextra -Wpedantic
+cxxflags_imgui_Release = -m64 -O2 -std=c++23 -I../external/imgui -I../external/imgui/backends -I../external/vulkan-headers/include -Wall -Wextra -Wpedantic
 ldflags_imgui_Release = -m64 -s -L/usr/lib64
 objdir_imgui_Release = ../bin-int/Release/Release/imgui
 targetdir_imgui_Release = ../bin/Release
 target_imgui_Release = imgui.lib
 
+build ../bin-int/Release/Release/imgui/imgui_impl_vulkan.o: cxx_gcc ../external/imgui/backends/imgui_impl_vulkan.cpp
+  cxxflags = $cxxflags_imgui_Release
 build ../bin-int/Release/Release/imgui/imgui.o: cxx_gcc ../external/imgui/imgui.cpp
   cxxflags = $cxxflags_imgui_Release
 build ../bin-int/Release/Release/imgui/imgui_demo.o: cxx_gcc ../external/imgui/imgui_demo.cpp
@@ -86,7 +90,7 @@ build ../bin-int/Release/Release/imgui/imgui_tables.o: cxx_gcc ../external/imgui
   cxxflags = $cxxflags_imgui_Release
 build ../bin-int/Release/Release/imgui/imgui_widgets.o: cxx_gcc ../external/imgui/imgui_widgets.cpp
   cxxflags = $cxxflags_imgui_Release
-build ../bin/Release/imgui.lib: ar_gcc ../bin-int/Release/Release/imgui/imgui.o ../bin-int/Release/Release/imgui/imgui_demo.o ../bin-int/Release/Release/imgui/imgui_draw.o ../bin-int/Release/Release/imgui/imgui_tables.o ../bin-int/Release/Release/imgui/imgui_widgets.o
+build ../bin/Release/imgui.lib: ar_gcc ../bin-int/Release/Release/imgui/imgui_impl_vulkan.o ../bin-int/Release/Release/imgui/imgui.o ../bin-int/Release/Release/imgui/imgui_demo.o ../bin-int/Release/Release/imgui/imgui_draw.o ../bin-int/Release/Release/imgui/imgui_tables.o ../bin-int/Release/Release/imgui/imgui_widgets.o
 
 # Build targets
 

@@ -19,16 +19,13 @@ project "imgui"
         "external/imgui/imgui_tables.cpp",
         "external/imgui/imgui_widgets.cpp",
         "external/imgui/imgui_demo.cpp",
-        "external/imgui/imconfig.h",
-        "external/imgui/imgui.h",
-        "external/imgui/imgui_internal.h",
-        "external/imgui/imstb_rectpack.h",
-        "external/imgui/imstb_textedit.h",
-        "external/imgui/imstb_truetype.h"
+        "external/imgui/backends/imgui_impl_vulkan.cpp"
     }
 
     includedirs {
-        "external/imgui"
+        "external/imgui",
+        "external/imgui/backends",
+        "external/vulkan-headers/include"
     }
 
     filter "toolset:gcc"
@@ -41,7 +38,17 @@ project "imgui"
         optimize "On"
 
     filter {}
-    
+
+project "volk"
+    kind "StaticLib"
+    language "C"
+    targetdir "bin/%{cfg.buildcfg}"
+    objdir "bin-int/%{cfg.buildcfg}"
+
+    files { "external/volk/volk.c" }
+
+    includedirs { "external/volk", "external/vulkan-headers/include" }
+
 project "raytracer"
     kind "ConsoleApp"
     language "C++"
@@ -54,10 +61,37 @@ project "raytracer"
 
     includedirs {
         "include",
-        "external/imgui"
+        "external/imgui",
+        "external/imgui/backends",
+        "external/volk",
+        "external/vulkan-headers/include"
     }
 
-    links { "imgui" }
+    links { "imgui", "volk" }
+
+    filter "system:windows"
+        local sdk = os.getenv("VULKAN_SDK") or "C:/VulkanSDK/1.4.341.1"
+        includedirs { sdk .. "/Include" }
+        libdirs { sdk .. "/Lib", sdk .. "/Lib/mingw" }
+        links { "vulkan-1" }
+
+    filter "system:linux"
+        local sdk = os.getenv("VULKAN_SDK") or (os.getenv("HOME") .. "/VulkanSDK/1.4.341.1/x86_64")
+        includedirs { sdk .. "/include" }
+        libdirs { sdk .. "/lib" }
+        links { "vulkan" }
+
+    filter "system:macosx"
+        local sdk = os.getenv("VULKAN_SDK") or (os.getenv("HOME") .. "/VulkanSDK/1.4.341.1/macOS")
+        includedirs { sdk .. "/include" }
+        libdirs { sdk .. "/lib" }
+        links { "vulkan" }
+
+    filter "system:windows"
+        links { "vulkan-1" }
+
+    filter "system:linux"
+        links { "vulkan" }
 
     filter "toolset:gcc"
         buildoptions { "-Wall", "-Wextra", "-Wpedantic" }
