@@ -7,7 +7,3 @@
 [submodule "external/vulkan-headers"]
 	path = external/vulkan-headers
 	url = https://github.com/KhronosGroup/Vulkan-Headers
-[submodule "external/SDL3"]
-	path = external/SDL3
-	url = https://github.com/libsdl-org/SDL.git
-	branch = main
