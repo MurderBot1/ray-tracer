@@ -37,3 +37,6 @@ build
 
 # My vscode files
 .vscode
+
+# IMGui file
+imgui.ini
