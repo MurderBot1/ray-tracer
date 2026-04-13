@@ -133,6 +133,7 @@ project "raytracer"
 
     includedirs {
         "include",
+        "external/stb",
         "external/imgui",
         "external/imgui/backends",
         "external/volk",
