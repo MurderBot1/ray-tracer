@@ -1,16 +1,16 @@
 #include "glfw-window-wrapper.h"
 
 GLFWWindowWrapper::GLFWWindowWrapper()
-    : window(glfwCreateWindow(data.width, data.height, data.title, nullptr, nullptr))
+    : m_window(glfwCreateWindow(c_data.width, c_data.height, c_data.title, nullptr, nullptr))
 {
 }
 
 GLFWwindow *GLFWWindowWrapper::GetWindow()
 {
-    return window;
+    return m_window;
 }
 
 WindowData GLFWWindowWrapper::GetData()
 {
-    return data;
+    return c_data;
 }

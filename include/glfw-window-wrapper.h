@@ -8,6 +8,7 @@ struct WindowData
     uint16_t width = 640;
     uint16_t height = 480;
     const char* title = "Ray Tracer";
+    const char* imagePath = "";
 };
 
 class GLFWWindowWrapper
@@ -17,8 +18,9 @@ class GLFWWindowWrapper
         GLFWwindow* GetWindow();
         WindowData GetData();
     private:
-        WindowData data;
-        GLFWwindow* window;
+        const WindowData c_data;
+        GLFWwindow* m_window;
+        GLFWimage* m_image;
 };
 
 #endif

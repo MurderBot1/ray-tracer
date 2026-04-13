@@ -21,15 +21,14 @@ class Window
          * The DisplayFrame function displays a renderer output to the frame.
          */
         static void DisplayFrame();
-        static void DisplayFrame(const RendererOutput& input);
 
         /** 
          * The DestroyWindow function hides and cleans up the display window. 
          */
         static void DestroyWindow();
     private:
-        static ImGuiIO* io;
-        static bool show;
+        static ImGuiIO* m_io;
+        static bool m_showing;
 };
 
 #endif

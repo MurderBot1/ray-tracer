@@ -42,10 +42,10 @@ class App
         void Cleanup();
     private:
         /// @brief This variable controls when the app is running.
-        bool running = true;
+        bool m_running = true;
         
         /// @brief This variable stores the reference to the running app class allowing it to have static functions.
-        static App* appRef;
+        static App* gm_appRef;
 };
 
 #endif

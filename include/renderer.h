@@ -12,9 +12,9 @@ class Renderer
     public: 
         Renderer();
     public:
-        static Renderer instance;
+        static Renderer g_instance;
     private:
-        GLFWWindowWrapper window;
+        GLFWWindowWrapper m_window;
 };
 
 #endif
