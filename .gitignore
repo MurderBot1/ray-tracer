@@ -40,3 +40,7 @@ build
 
 # IMGui file
 imgui.ini
+
+# build folders
+bin
+bin-int
