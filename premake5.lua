@@ -133,6 +133,7 @@ project "raytracer"
 
     includedirs {
         "include",
+        "external/miniaudio",
         "external/stb",
         "external/imgui",
         "external/imgui/backends",
