@@ -3,6 +3,13 @@
 
 App* App::gm_appRef;
 
+void InitGLFW() {
+    if (!glfwInit()) {
+        std::cout << "Failed to launch GLFW.\n";
+        exit(-1);
+    }
+}
+
 void App::RequestAppStop()
 {
     // Request an app stop
@@ -30,6 +37,7 @@ App::App()
 
 void App::Setup()
 {
+    InitGLFW();
     Window::Init();
     Audio::Init();
 

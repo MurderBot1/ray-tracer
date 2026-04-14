@@ -3,7 +3,7 @@
 
 GLFWWindowWrapper::GLFWWindowWrapper()
     : m_window(nullptr)
-{
+{   
     m_window = glfwCreateWindow(c_data.width, c_data.height, c_data.title, nullptr, nullptr);
 
     m_imageIcon.pixels = stbi_load(c_data.imagePath, &m_imageIcon.width, &m_imageIcon.height, 0, 4);
