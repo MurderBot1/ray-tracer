@@ -1,10 +1,10 @@
 // Copyright © 2026 Trent Cridland. All rights reserved. Contact me at murderbot1@outlook.com
-#include "window.h"
+#include "rt-window.h"
 
 ImGuiIO* Window::m_io;
 bool Window::m_showing;
 
-void Window::CreateWindow()
+void Window::Init()
 {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();

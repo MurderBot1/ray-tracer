@@ -13,9 +13,9 @@ class Window
 {
     public:
         /** 
-         * The CreateWindow function creates and displays the window.
+         * The Init function creates and displays the window.
          */
-        static void CreateWindow();
+        static void Init();
 
         /** 
          * The DisplayFrame function displays a renderer output to the frame.

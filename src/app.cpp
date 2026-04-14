@@ -30,7 +30,11 @@ App::App()
 
 void App::Setup()
 {
-    Window::CreateWindow();
+    Window::Init();
+    Audio::Init();
+
+    // Set the first scene
+    SetScene(Scene::FOREST);
 }
 
 void App::Loop()
@@ -41,4 +45,14 @@ void App::Loop()
 void App::Cleanup()
 {
     Window::DestroyWindow();
+    Audio::Cleanup();
+}
+
+void App::SetScene(Scene scene)
+{
+    if(gm_appRef->gm_scene == scene)
+        return;
+    gm_appRef->gm_scene = scene;
+
+    Audio::SetScene(scene);
 }

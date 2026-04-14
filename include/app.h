@@ -2,8 +2,10 @@
 #ifndef APP_H
 #define APP_H
 
-#include <renderer.h>
-#include <window.h>
+#include "renderer.h"
+#include "rt-window.h"
+#include "scenes.h"
+#include "audio.h"
 
 /**
  * App is the main class that controls the program. It runs this in order:
@@ -40,9 +42,17 @@ class App
          * The goal of this function is to save log files and Cleanup other things used by the application.
          */
         void Cleanup();
+
+        /**
+         * The SetScene function allows you to switch the scene the app is displaying
+         */
+        static void SetScene(Scene scene);
     private:
         /// @brief This variable controls when the app is running.
         bool m_running = true;
+
+        /// @brief The current loaded scene
+        Scene gm_scene;
         
         /// @brief This variable stores the reference to the running app class allowing it to have static functions.
         static App* gm_appRef;

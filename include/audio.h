@@ -9,11 +9,11 @@
 
 class Audio {
     public:
-        void Init();
-        void SetScene(Scene scene);
-        void Cleanup();
+        static void Init();
+        static void SetScene(Scene scene);
+        static void Cleanup();
     private:
-        const std::map<Scene, const char*> getPaths();
+        static const std::map<Scene, const char*> getPaths();
     private:
         static ma_engine gm_engine;
         static std::map<Scene, ma_sound> gm_audioMap;
