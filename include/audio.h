@@ -15,8 +15,8 @@ class Audio {
     private:
         static const std::map<Scene, const char*> getPaths();
     private:
-        static ma_engine gm_engine;
-        static std::map<Scene, ma_sound> gm_audioMap;
+        inline static ma_engine gm_engine;
+        inline static std::map<Scene, ma_sound> gm_audioMap;
 };
 
 #endif

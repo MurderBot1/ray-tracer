@@ -37,3 +37,8 @@ void Window::DestroyWindow()
 {
     ImGui::DestroyContext();
 }
+
+GLFWwindow *Window::GetGLFWWindow()
+{
+    return m_window.GetWindow();
+}

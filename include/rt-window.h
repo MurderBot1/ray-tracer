@@ -4,6 +4,7 @@
 
 #include "renderer.h"
 #include "imgui.h"
+#include "glfw-window-wrapper.h"
 
 /**
  * The window class is used to display the UI.
@@ -26,9 +27,12 @@ class Window
          * The DestroyWindow function hides and cleans up the display window. 
          */
         static void DestroyWindow();
+    public:
+        static GLFWwindow* GetGLFWWindow();
     private:
         static ImGuiIO* m_io;
         static bool m_showing;
+        static GLFWWindowWrapper m_window;
 };
 
 #endif

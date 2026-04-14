@@ -6,6 +6,7 @@
 #include "rt-window.h"
 #include "scenes.h"
 #include "audio.h"
+#include "user-input.h"
 
 /**
  * App is the main class that controls the program. It runs this in order:
@@ -24,6 +25,11 @@ class App
          * This is done so that we can call App(); in the main function to clean it up.
          */
         App();
+
+        /**
+         * The SetScene function allows you to switch the scene the app is displaying
+         */
+        static void SetScene(Scene scene);
     private:
         /**
          * The Setup function is ran once as the first thing that the program does.
@@ -42,11 +48,6 @@ class App
          * The goal of this function is to save log files and Cleanup other things used by the application.
          */
         void Cleanup();
-
-        /**
-         * The SetScene function allows you to switch the scene the app is displaying
-         */
-        static void SetScene(Scene scene);
     private:
         /// @brief This variable controls when the app is running.
         bool m_running = true;

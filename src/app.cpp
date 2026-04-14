@@ -18,7 +18,7 @@ App::App()
     Setup();
 
     // Runs the app until it is told to stop
-    while (m_running)
+    while (!glfwWindowShouldClose(Window::GetGLFWWindow()))
     {
         // Runs the loop which renders and displays a frame
         Loop();
@@ -39,6 +39,8 @@ void App::Setup()
 
 void App::Loop()
 {
+    Input::NewFrame();
+    glfwPollEvents();
     Window::DisplayFrame();
 }
 

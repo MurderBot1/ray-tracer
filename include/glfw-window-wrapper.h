@@ -1,7 +1,7 @@
 #ifndef GLFW_WINDOW_WRAPPER_H
 #define GLFW_WINDOW_WRAPPER_H
 
-#include "glfw3.h"
+#include "GLFW/glfw3.h"
 #include "stb_image.h"
 
 struct WindowData
