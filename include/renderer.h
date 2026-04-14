@@ -10,11 +10,13 @@
 class Renderer 
 {
     public: 
+        /**
+         * 
+         */
         Renderer();
     public:
+        /// @brief
         static Renderer g_instance;
-    private:
-        GLFWWindowWrapper m_window;
 };
 
 #endif

@@ -39,7 +39,9 @@ void App::Setup()
 
 void App::Loop()
 {
+    std::cout << "loop\n";
     Input::NewFrame();
+    Input::CheckSceneChanges();
     glfwPollEvents();
     Window::DisplayFrame();
 }
@@ -57,4 +59,12 @@ void App::SetScene(Scene scene)
     gm_appRef->gm_scene = scene;
 
     Audio::SetScene(scene);
+
+    switch (scene)
+    {
+        case Scene::FOREST: std::cout << "Switched to forest scene\n"; break;
+        case Scene::SPACE: std::cout << "Switched to space scene\n"; break;
+        // Shouldn't actually be reached in Prod but used to tell me that a case isn't implemented
+        default: std::cout << "Switched to unknown scene\n"; break; 
+    }
 }

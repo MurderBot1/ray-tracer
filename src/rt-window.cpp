@@ -3,6 +3,7 @@
 
 ImGuiIO* Window::m_io;
 bool Window::m_showing;
+GLFWWindowWrapper Window::m_window;
 
 void Window::Init()
 {

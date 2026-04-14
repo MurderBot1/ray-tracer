@@ -28,10 +28,16 @@ class Window
          */
         static void DestroyWindow();
     public:
+        /**
+         * 
+         */
         static GLFWwindow* GetGLFWWindow();
     private:
+        /// @brief
         static ImGuiIO* m_io;
+        /// @brief
         static bool m_showing;
+        /// @brief
         static GLFWWindowWrapper m_window;
 };
 
