@@ -1,5 +1,5 @@
 $version = "1.4.341.1"
-$base = "C:\VulkanSDK\$version"
+$base = "C:\VulkanSDK"   # install directly into C:\VulkanSDK
 
 if (Test-Path $base) {
     Write-Host "Vulkan SDK $version already installed."
@@ -7,17 +7,18 @@ if (Test-Path $base) {
 }
 
 Write-Host "Downloading Vulkan SDK $version..."
-$installer = "VulkanSDK-$version-Installer.exe"
-$url = "https://sdk.lunarg.com/sdk/download/$version/windows/VulkanSDK-$version-Installer.exe?Human=true"
 
-Invoke-WebRequest -Uri $url -OutFile $installer
+$installer = "vulkansdk-windows-X64-$version.exe"
+$url = "https://sdk.lunarg.com/sdk/download/$version/windows/$installer"
+
+Invoke-WebRequest -Uri $url -OutFile $installer -ErrorAction Stop
 
 Write-Host "Running Vulkan SDK installer..."
 Start-Process -FilePath ".\$installer" -ArgumentList `
-    "--accept-licenses", `
-    "--default-answer", `
-    "--confirm-command", `
-    "--root", "`"$base`"" `
+    "--accept-licenses" `
+    "--default-answer" `
+    "--confirm-command" `
+    "install" `
     -Wait
 
 $env:VULKAN_SDK = $base
