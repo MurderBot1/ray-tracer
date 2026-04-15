@@ -6,6 +6,8 @@
 #include "imgui.h"
 #include "glfw-window-wrapper.h"
 
+#include <memory>
+
 /**
  * The window class is used to display the UI.
  * It takes in the input from the renderer and displays it to the user.
@@ -34,11 +36,13 @@ class Window
         static GLFWwindow* GetGLFWWindow();
     private:
         /// @brief
-        static ImGuiIO* m_io;
+        static std::unique_ptr<Window> ref;
         /// @brief
-        static bool m_showing;
+        ImGuiIO* m_io;
         /// @brief
-        static GLFWWindowWrapper m_window;
+        bool m_showing;
+        /// @brief
+        GLFWWindowWrapper m_window;
 };
 
 #endif
