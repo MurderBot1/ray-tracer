@@ -10,11 +10,14 @@ GLFWWindowWrapper::GLFWWindowWrapper()
     if (m_imageIcon.pixels && m_window) {
         glfwSetWindowIcon(m_window, 1, &m_imageIcon);
     }
+    std::cout << "Loaded GLFW\n";
 }
 
 GLFWWindowWrapper::~GLFWWindowWrapper()
 {
     if (m_imageIcon.pixels) stbi_image_free(m_imageIcon.pixels);
+    glfwDestroyWindow(m_window);
+    std::cout << "Cleaned GLFW\n";
 }
 
 GLFWwindow *GLFWWindowWrapper::GetWindow()

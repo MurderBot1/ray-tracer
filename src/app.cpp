@@ -10,6 +10,10 @@ void InitGLFW() {
     }
 }
 
+void CleanGLFW() {
+    glfwTerminate();
+}
+
 void App::RequestAppStop()
 {
     // Request an app stop
@@ -37,8 +41,12 @@ App::App()
 
 void App::Setup()
 {
+    // Init GLFW
     InitGLFW();
+    
+    // Run raytracer init functions
     Window::Init();
+    Input::Init();
     Audio::Init();
 
     // Set the first scene
@@ -47,15 +55,18 @@ void App::Setup()
 
 void App::Loop()
 {
-    std::cout << "loop\n";
+    // Run input events
     Input::NewFrame();
     Input::CheckSceneChanges();
     glfwPollEvents();
+
+    // Display the frame
     Window::DisplayFrame();
 }
 
 void App::Cleanup()
 {
+    // Cleanup engine components
     Window::DestroyWindow();
     Audio::Cleanup();
 }

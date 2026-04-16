@@ -7,6 +7,7 @@ bool Input::s_KeysPrev[512] = {};
 void Input::Init()
 {
     glfwSetKeyCallback(Window::GetGLFWWindow(), KeyboardCallback);
+    std::cout << "Loaded input engine\n";
 }
 
 void Input::CheckSceneChanges()
