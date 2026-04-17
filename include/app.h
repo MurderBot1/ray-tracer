@@ -7,6 +7,8 @@
 #include "scenes.h"
 #include "audio.h"
 #include "user-input.h"
+#include "vulkan-wrapper.h"
+
 
 /**
  * App is the main class that controls the program. It runs this in order:
@@ -57,6 +59,7 @@ class App
         
         /// @brief This variable stores the reference to the running app class allowing it to have static functions.
         static App* gm_appRef;
+        VulkanWrapper VKW;
 };
 
 #endif

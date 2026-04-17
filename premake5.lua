@@ -138,7 +138,9 @@ project "raytracer"
         "external/imgui",
         "external/imgui/backends",
         "external/volk",
-        "external/vulkan-headers/include",
+        "C:/VulkanSDK/1.4.341.1/Include",
+        -- "external/vulkan-headers/include/vulkan",
+        -- "external/vulkan-headers/include/vk_video",
         "external/glfw/include"
     }
 
